@@ -1,6 +1,26 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+
+  before_action :customer_state, only:[:create]
+
+  protected
+
+  def customer_state
+    @customer = Customer.find_by(email: params[:customer][:email])
+    return if !@customer
+    if @customer.valid_password?(params[:customer][:password]) && !is_deleted
+    # if パスワードがあっている　かつ　退会済ではない
+
+    else
+      render:new
+      # ログイン画面に戻る
+    end
+
+  end
+
+
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
