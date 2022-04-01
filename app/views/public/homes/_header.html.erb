@@ -1,0 +1,38 @@
+<body>
+  <header>
+    <% if user_signed_in? %>
+    <li>
+        <%= link_to "LOGO", public_homes_top_path %>
+      </li>
+      <li>
+        <%= link_to "マイページ", public_customer(public_customer.id)_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧", public_items_path %>
+      </li>
+      <li>
+        <%= link_to "カート", public_cart_items_path %>s
+      </li>
+      <li>
+        <%= link_to "ログアウト", public_homes_top_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "LOGO", public_homes_top_path %>
+      </li>
+      <li>
+        <%= link_to "About", public_homes_about_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧", public_items_path %>
+      </li>
+      <li>
+        <%= link_to "新規登録", new_customer_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_customer__path %>
+      </li>
+    <% end %>
+  </header>
+
+</body>
