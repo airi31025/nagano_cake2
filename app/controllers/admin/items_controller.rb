@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
+    @items = Item.page(params[:page])
   end
 
   def new
@@ -7,7 +8,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
+    @item = Item.new(item_params)
     list.save
     redirect_to admin_item_path(@item.id)
   end

@@ -1,21 +1,26 @@
 <body>
   <header>
     <% if customer_signed_in? %>
-    <li>
-        <%= link_to "LOGO", public_homes_top_path %>
+      <li>
+        <%="LOGO" %>
+      </li>
+
+      <li>
+        <%= link_to "商品一覧", admin_items_path %>
       </li>
       <li>
-        <%= link_to "マイページ", public_customer_path %>
+        <%= link_to "会員一覧", admin_customers_path %>
+      </li>
+      <!--<li>-->
+      <!--  <%#= link_to "注文履歴一覧", admin__path %>-->
+      <!--</li>-->
+      <li>
+        <%= link_to "ジャンル一覧", admin_genres_path %>
       </li>
       <li>
-        <%= link_to "商品一覧", public_items_path %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
-      <li>
-        <%#= link_to "カート", public_cart_items_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
+
     <% else %>
       <li>
         <%= link_to "LOGO", public_homes_top_path %>

@@ -1,6 +1,10 @@
-<h2>Log in</h2>
+<%= render 'header' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<h2>ログイン</h2>
+
+<h4>会員の方はこちらからログイン</h4>
+
+<%= form_with model: @public, url: public_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
