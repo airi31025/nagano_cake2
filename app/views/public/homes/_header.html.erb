@@ -5,16 +5,22 @@
         <%= link_to "LOGO", public_homes_top_path %>
       </li>
       <li>
-        <%#= link_to "マイページ", public_customer_path %>
+        <%= link_to "マイページ", public_customer_path %>
       </li>
       <li>
         <%= link_to "商品一覧", public_items_path %>
       </li>
       <li>
-        <%= link_to "カート", public_cart_items_path %>s
+        <%#= link_to "カート", public_cart_items_path %>
       </li>
       <li>
-        <%= link_to "ログアウト", public_homes_top_path, method: :delete %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "新規登録", new_customer_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_customer_session_path %>
       </li>
     <% else %>
       <li>
@@ -30,7 +36,7 @@
         <%= link_to "新規登録", new_customer_registration_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_customer__path %>
+        <%= link_to "ログイン", new_customer_session_path %>
       </li>
     <% end %>
   </header>
