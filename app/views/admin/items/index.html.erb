@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= @items.each do |items| %>
+      <% @items.each do |items| %>
         <tr>
           <td><%= items.id %></td>
           <td><%= link_to item.title,admin_items_path %></td>
