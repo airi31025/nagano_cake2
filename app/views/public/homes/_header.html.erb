@@ -1,7 +1,7 @@
 <body>
   <header>
     <% if customer_signed_in? %>
-    
+
     <li>
         <%= link_to "LOGO", public_homes_top_path %>
       </li>
@@ -12,7 +12,7 @@
         <%= link_to "商品一覧", public_items_path %>
       </li>
       <li>
-        <%#= link_to "カート", public_cart_items_path %>
+        <%= link_to "カート", public_cart_items_path %>
       </li>
       <li>
         <%= button_to "ログアウト", destroy_customer_session_path, method: :delete %>
