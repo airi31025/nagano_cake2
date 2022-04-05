@@ -5,6 +5,10 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :address, dependent: :destroy
+  
   
   def get_image
     unless image.attached?

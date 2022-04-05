@@ -1,11 +1,11 @@
 <%= render 'admin/sessions/header' %>
 
 <h1>ジャンル編集</h1>
-<%= form_with model: @genre, url: update_admin_genre_path(@list.id), method: :patch  do |f| %>
+<%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch  do |f| %>
 
   <h4>ジャンル名</h4>
   <%= f.text_field :name %>
 
-  <%= f.submit '変更を保存' %>
+  <%= button_to'変更を保存',admin_genres_path %>
 
   <% end %>
