@@ -1,29 +1,28 @@
-<%= render 'admin/session/header' %>
+<%= render 'admin/sessions/header' %>
 
 <h2>商品詳細</h2>
-<% @item.each do |item| %>
 
-<% if item.image.attached? %>
-    <%= image_tag item.image, size: "200x200" %>
+
+<% if @item.image.attached? %>
+    <%= image_tag @item.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
 
 <h4>商品名</h4>
-  <%= item.title %>
+  <%= @item.name %>
 
 <h4>商品説明</h4>
-  <%= item.body %>
+  <%= @item.introduction %>
 
 <h4>ジャンル</h4>
-  <%= item.genre %>
+  <%= @item.genre_id %>
 
 <h4>税込価格</h4>
-  <%= item.price %>
+  <%= @item.price %>
 
 <h4>販売ステータス</h4>
   <%= %>
 
-<%= link_to "編集する", edit_item_path(@item.id) %>
+<%= link_to "編集する", edit_admin_item_path(@item.id) %>
 
-<% end %>
