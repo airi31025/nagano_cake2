@@ -19,7 +19,13 @@
           <td><%= items.name %></td>
           <td><%= items.price %></td>
           <td><%= items.genre_id %></td>
-          <td><%= items.is_active %></td>
+          <td>
+            <% if items.is_active %>
+            販売中
+            <% else %>
+            販売停止中
+            <% end %>
+          </td>
         </tr>
       <% end %>
       <%= paginate @items %>
