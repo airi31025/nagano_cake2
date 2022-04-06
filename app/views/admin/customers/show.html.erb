@@ -1,7 +1,7 @@
 <%= render 'admin/sessions/header' %>
 
 <% @customers.each do |customer| %>
-<h2><%= customer.last_name+first_name %>さんの会員詳細</h2>
+<h2><%= customer.last_name+customer.first_name %>さんの会員詳細</h2>
 
 <h4>会員ID</h4>
   <%= customer.id %>
