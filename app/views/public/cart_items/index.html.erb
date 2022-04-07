@@ -1,7 +1,7 @@
 <%= render 'public/homes/header' %>
 
 <h1>ショッピングカート</h1>
-<%= button_to"カートを空にする",@cart_items.destroy_all %>
+<%= button_to"カートを空にする",public_cart_items_alldelete_path %>
 <table>
   <thead>
     <th>商品名</th>
@@ -13,11 +13,11 @@
    <tbody>
      <% @cart_items.each do |cart_item| %>
        <tr>
-         <td><%= cart_item.name %></td>
+         <td><%= cart_item.item_id %></td>
          <td><%= cart_item.item.with_tax_price %></td>
          <td><%= cart_item.amount %></td>
          <td><%= cart_item.subtotal %></td>
-         <td><%= link_to"削除する",destroy_cart_item_path(cart_item.id),method: :delete,"data-confirm"=>"本当に削除しますか"%></td>
+         <td><%= link_to"削除する",public_cart_item_path(cart_item.id) %></td>
          <% @合計金額 += cart_item.subtotal %>
        </tr>
        <% end %>

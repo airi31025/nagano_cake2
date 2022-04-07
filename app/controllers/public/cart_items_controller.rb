@@ -9,6 +9,7 @@ class Public::CartItemsController < ApplicationController
   def delete
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    redirect_to public_cart_items_path
 
   end
 
