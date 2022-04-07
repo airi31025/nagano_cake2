@@ -4,12 +4,12 @@
 <p><%= @item.name %></p>
 <p><%= @item.introduction %></p>
 <p><%= @item.price %></p>
-<p><%= f.hidden_field :name, :value "@item.name" %></p>
-<p><%= f.hidden_field :price, :value "@item.price" %></p>
 
-<p><%= f.select :amount, *[1..3] %></p>
 
-<%= form_with model: Item.find(params[:id]) do |f| %>
- <%= f.text_field :amount %>
- <%= f.submit 'カートに入れる' %>
+<%= form_with model: CartItem.new, url: public_cart_items_path do |f| %>
+<%= f.hidden_field :item_id, :value => @item.id %>
+
+
+<%= f.select :amount, *[1..3] %>
+<%= f.submit 'カートに入れる' %>
 <% end %>
