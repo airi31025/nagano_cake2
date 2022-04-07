@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     delete 'cart_items/alldelete'
     resource :customers,only:[:show,:edit,:update]
     get 'customers/confirm'
-    patch 'customers/withdrawal'
+    patch 'customers/withdrawal' => 'customers#withdrawal'
     resources :items,only:[:index,:show]
   end
 
