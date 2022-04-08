@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    
   end
 
   def thanks
@@ -12,8 +13,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
+    @items = Item.all
   end
 
   def show
+    @order = Order.find(params[:id])
+    @item = Item.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
   end
 end
