@@ -15,6 +15,8 @@
          <td><%= cart_item.item.with_tax_price %></td>
          <td><%= cart_item.amount %></td>
          <td><%= cart_item.subtotal %></td>
+         <% @total += (cart_item.item.with_tax_price) *(cart_item.amount) %>
+         <% end %>
    </tbody>
 </table>
 
@@ -28,13 +30,16 @@
        <tr>
          <td><%= @order.shipping_cost %></td>
          <td><%= @order.total_payment %></td>
-         <td><%= @order.shipping_cost+ @order.total_payment %></td>
+         <td><%= @order.shipping_cost + @total %></td>
        </tr>
    </tbody>
 </table>
 
 <h4>支払方法</h4>
+<%= @order.payment_method %>
 <h4>お届け先</h4>
+<%= @order.address %>
+
 
 
 <%= link_to "注文を確定する", public_orders_thanks_path %>
