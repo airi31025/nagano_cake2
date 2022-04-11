@@ -10,12 +10,10 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @order.shipping_cost =800
     if params[:order][:select_address] == '0' then
-
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.first_name+current_customer.last_name
     elsif params[:order][:select_address] == '1' then
-
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
@@ -30,8 +28,6 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:name]
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
-
-
     end
 
   end
@@ -40,6 +36,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.shipping_cost = 800
+    @order.status = "waiting_for_deposit"
+    @order.save
+    
+    @order_detail.item_id =
+    @order_detail.amount = current_customer.cart_item.amount
+    @order_detail.save
+    @cart_items = CartItem.all
+    @cart_items.destroy_all
+
+    redirect_to public_orders_thanks_path
   end
 
   def index
@@ -55,7 +64,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :total_payment)
   end
 
 end
