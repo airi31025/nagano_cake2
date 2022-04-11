@@ -1,2 +1,53 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<%= render 'admin/sessions/header' %>
+
+<h2>注文履歴詳細</h2>
+
+<h4>購入者</h4>
+<p><%= @customer.last_name + @customer.first_name %></p>
+
+<h4>注文日</h4>
+<p><%= %></p>
+
+<h4>配送先</h4>
+<p><%= "〒" + @order.postal_code + @order.address %></p><br>
+<%= @order.name %>
+
+<h4>支払方法</h4>
+<p><%= @order.payment_method_i18n %></p>
+
+<h4>注文ステータス</h4>
+<p><%= @order.status %></p>
+
+<table>
+ <thead>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+   </thead>
+   <tbody>
+       <% @cart_items.each do |cart_item| %>
+       <tr>
+         <td><%= cart_item.item.name %></td>
+         <td><%= cart_item.item.with_tax_price %></td>
+         <td><%= cart_item.amount %></td>
+         <td><%= cart_item.subtotal %></td>
+         <% @total += (cart_item.item.with_tax_price) *(cart_item.amount) %>
+         <% end %>
+   </tbody>
+</table>
+
+<table>
+ <thead>
+    <th>送料</th>
+    <th>商品合計</th>
+    <th>請求金額合計</th>
+   </thead>
+   <tbody>
+       <tr>
+         <td><%= @order.shipping_cost %></td>
+         <td><%= @total %></td>
+         <td><%= @order.shipping_cost + @total %></td>
+       </tr>
+   </tbody>
+</table>

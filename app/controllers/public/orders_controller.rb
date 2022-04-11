@@ -41,9 +41,10 @@ class Public::OrdersController < ApplicationController
     @order.shipping_cost = 800
     @order.status = "waiting_for_deposit"
     @order.save
-    
-    @order_detail.item_id =
-    @order_detail.amount = current_customer.cart_item.amount
+
+    @order_detail = OrderDetail.new
+    @order_detail.item_id = current_customer.cart_items.item_id
+    @order_detail.amount = current_customer.cart_items.amount
     @order_detail.save
     @cart_items = CartItem.all
     @cart_items.destroy_all

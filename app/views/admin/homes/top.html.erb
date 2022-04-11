@@ -1,4 +1,22 @@
 <%= render 'admin/sessions/header' %>
 
-<h1>注文履歴一覧</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h2>注文履歴一覧</h2>
+<table>
+  <thead>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+    <th>注文ステータス</th>
+   </thead>
+   <tbody>
+     <% @orders.each do |order| %>
+       <tr>
+         <td><%= link_to order.create_at,admin_order_path(order.id) %></td>
+         <td><%= order.customer.last_name+first_name %></td>
+         <td><%= @items.amount %></td>
+         <td><%= order.status %></td>
+       </tr>
+       <% end %>
+   </tbody>
+</table>
+
