@@ -6,7 +6,7 @@
 <p><%= @customer.last_name + @customer.first_name %></p>
 
 <h4>注文日</h4>
-<p><%= %></p>
+<p><%= @customer.created_at.strftime('%Y/%m/%d') %></p>
 
 <h4>配送先</h4>
 <p><%= "〒" + @order.postal_code + @order.address %></p><br>
@@ -15,8 +15,6 @@
 <h4>支払方法</h4>
 <p><%= @order.payment_method_i18n %></p>
 
-<h4>注文ステータス</h4>
-<p><%= @order.status %></p>
 
 <table>
  <thead>
@@ -26,27 +24,27 @@
     <th>小計</th>
    </thead>
    <tbody>
-       <% @cart_items.each do |cart_item| %>
+       <% @order_details.each do |order_detail| %>
        <tr>
-         <td><%= cart_item.item.name %></td>
-         <td><%= cart_item.item.with_tax_price %></td>
-         <td><%= cart_item.amount %></td>
-         <td><%= cart_item.subtotal %></td>
-         <% @total += (cart_item.item.with_tax_price) *(cart_item.amount) %>
+         <td><%= order_detail.item.name %></td>
+         <td><%= order_detail.item.with_tax_price %></td>
+         <td><%= order_detail.amount %></td>
+         <td><%= order_detail.subtotal %></td>
+         <% @total += (order_detail.item.with_tax_price) *(order_detail.amount) %>
          <% end %>
    </tbody>
 </table>
 
 <table>
  <thead>
-    <th>送料</th>
     <th>商品合計</th>
+    <th>送料</th>
     <th>請求金額合計</th>
    </thead>
    <tbody>
        <tr>
-         <td><%= @order.shipping_cost %></td>
          <td><%= @total %></td>
+         <td><%= @order.shipping_cost %></td>
          <td><%= @order.shipping_cost + @total %></td>
        </tr>
    </tbody>

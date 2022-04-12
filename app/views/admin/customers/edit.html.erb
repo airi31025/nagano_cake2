@@ -1,13 +1,12 @@
 <%= render 'admin/sessions/header' %>
 
-<% @customers.each do |customer| %>
-<h2><%= customer.last_name+customer.first_name %>さんの会員情報編集</h2>
 
+<h2><%= @customer.last_name+@customer.first_name %>さんの会員情報編集</h2>
 <h4>会員ID</h4>
-  <%= customer.id %>
-<% end %>
+  <%= @customer.id %>
 
 <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+
 <h4>氏名</h4>
   <%= f.text_field :last_name %>
   <%= f.text_field :first_name %>
