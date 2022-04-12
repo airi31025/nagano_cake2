@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address] == '0' then
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name+current_customer.last_name
+      @order.name = current_customer.last_name+current_customer.first_name
     elsif params[:order][:select_address] == '1' then
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
@@ -41,14 +41,15 @@ class Public::OrdersController < ApplicationController
     @order.shipping_cost = 800
     @order.status = "waiting_for_deposit"
     @order.save
-
+current_customer.cart_items.each do |cart_item|
     @order_detail = OrderDetail.new
-    @order_detail.item_id = current_customer.cart_items.item_id
-    @order_detail.amount = current_customer.cart_items.amount
+    @order_detail.item_id = cart_item.item_id
+    @order_detail.amount = cart_item.amount
+    @order_detail.order_id = @order.id
     @order_detail.save
-    @cart_items = CartItem.all
-    @cart_items.destroy_all
 
+    cart_item.destroy
+  end
     redirect_to public_orders_thanks_path
   end
 
@@ -59,8 +60,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @item = Item.find(params[:id])
-    @cart_item = CartItem.find(params[:id])
+
+    @order_details = @order.order_details
   end
 
   private

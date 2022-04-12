@@ -19,7 +19,8 @@ class Public::CustomersController < ApplicationController
   def withdrawal
     customer = Customer.find(current_customer.id)
     customer.update(is_active: false)
-    redirect_to new_customer_session_path
+    reset_session
+    redirect_to root_path
   end
 
   private
