@@ -1,6 +1,8 @@
 <%= render 'public/homes/header' %>
-
+<div class="container">
+  <div class="row">
 <h2>会員情報編集</h2>
+  </div>
 <%= form_with model: @customer, url: public_customers_path, method: :patch do |f| %>
 
 <h4>氏名</h4>
@@ -23,8 +25,9 @@
 <h4>メールアドレス</h4>
 <%= f.text_field :email %>
 
-<%= f.submit '編集内容を保存' %>
+<%= f.submit '編集内容を保存',class:"btn btn-success btn-sm" %>
 
-<%= link_to"退会する",public_customers_confirm_path %>
+<%= link_to"退会する",public_customers_confirm_path ,class:"btn btn-danger btn-sm"%>
 
 <% end %>
+</div>

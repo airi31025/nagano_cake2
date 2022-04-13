@@ -1,7 +1,9 @@
 <%= render 'admin/sessions/header' %>
-
+<div class="container">
+  <div class="row">
 <h2>商品新規登録</h2>
 <%= form_with model:@item, url: admin_items_path, method: :post do |f| %>
+  </div>
   <h4>商品画像</h4>
   <%=f.file_field :image,accept:"image/*"  %>
 
@@ -24,6 +26,7 @@
   <%=f.radio_button :is_active,false%>
   <%=f.label :is_active,"販売停止中",value:false%>
 
-  <%=f.submit'新規登録' %>
+  <%=f.submit'新規登録' ,class:"btn btn-success btn-sm"%>
 <% end %>
+</div>
 

@@ -1,7 +1,9 @@
 <%= render 'public/homes/header' %>
-
+<div class="container">
+  <div class="row">
 <h2>注文情報確認</h2>
-<table>
+ </div>
+<table class="table table-hover table-bordered">
  <thead>
     <th>商品名</th>
     <th>単価（税込）</th>
@@ -20,7 +22,7 @@
    </tbody>
 </table>
 
-<table>
+<table class="table table-hover table-bordered">
  <thead>
     <th>送料</th>
     <th>商品合計</th>
@@ -47,8 +49,9 @@
   <%= f.hidden_field :address, :value => @order.address %>
   <%= f.hidden_field :name, :value => @order.name %>
   <%= f.hidden_field :total_payment, :value => @order.shipping_cost + @total %>
-  <%= f.submit '注文を確定する' %>
+  <%= f.submit '注文を確定する' ,class:"btn btn-success btn-sm"%>
 <% end %>
+</div>
 
 
 

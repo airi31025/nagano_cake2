@@ -1,6 +1,8 @@
 <%= render 'header' %>
-
+<div class="container">
+  <div class="row">
 <h2>管理者ログイン</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -21,8 +23,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" ,class:"btn btn-primary btn-sm"%>
   </div>
 <% end %>
 
 <%= render "admin/shared/links" %>
+
+</div>

@@ -1,8 +1,10 @@
 <%= render 'public/homes/header' %>
-
+<div class="container">
+  <div class="row">
 <h2>マイページ</h2>
+  </div>
 <h4>登録情報</h4>
-<%= link_to "編集する", edit_public_customers_path %>
+<%= link_to "編集する", edit_public_customers_path,class:"btn btn-success btn-sm" %>
 
 <h4>氏名</h4>
   <%= @customer.last_name+@customer.first_name %>
@@ -18,7 +20,9 @@
   <%= @customer.email %>
 
 <h4>配送先</h4>
-　<%= link_to"一覧を見る",public_addresses_path %>
+　<%= link_to"一覧を見る",public_addresses_path ,class:"btn btn-primary btn-sm"%>
 
 <h4>注文履歴</h4>
-  <%= link_to"一覧を見る",public_orders_path %>
+  <%= link_to"一覧を見る",public_orders_path ,class:"btn btn-primary btn-sm"%>
+
+</div>

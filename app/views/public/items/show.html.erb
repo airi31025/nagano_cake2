@@ -1,15 +1,24 @@
 <%= render 'public/homes/header' %>
-
+<div class="container">
+  <div class="row">
 <p><%= image_tag @item.image %></p>
+  </div>
+  <div class="row">
 <p><%= @item.name %></p>
+  </div>
+<div class="row">
 <p><%= @item.introduction %></p>
+</div>
+<div class="row">
 <p><%= "¥"+@item.price.to_s %></p>
+</div>
 
-
+<div class="row">
 <%= form_with model: CartItem.new, url: public_cart_items_path do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
-
+</div>
 
 <%= f.select :amount, *[1..3] %>
-<%= f.submit 'カートに入れる' %>
+<%= f.submit 'カートに入れる' ,class:"btn btn-success btn-sm"%>
 <% end %>
+</div>

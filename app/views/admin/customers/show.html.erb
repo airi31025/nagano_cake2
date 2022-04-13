@@ -1,8 +1,9 @@
 <%= render 'admin/sessions/header' %>
 
-
+<div class="container">
+  <div class="row">
 <h2><%= @customer.last_name+@customer.first_name %>さんの会員詳細</h2>
-
+  </div>
 <h4>会員ID</h4>
   <%= @customer.id %>
 <h4>氏名</h4>
@@ -23,9 +24,9 @@
   <% else %>
   退会
   <% end %>
+  <div class="row">
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) ,class:"btn btn-success btn-sm" %>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
-
-<%= link_to "注文履歴一覧を見る", admin_customers_path %>
-
-
+<%= link_to "注文履歴一覧を見る", admin_customers_path ,class:"btn btn-primary btn-sm" %>
+  </div>
+</div>
