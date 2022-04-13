@@ -1,9 +1,9 @@
 <%= render 'public/homes/header' %>
 
-<p><%= @item.image %></p>
+<p><%= image_tag @item.image %></p>
 <p><%= @item.name %></p>
 <p><%= @item.introduction %></p>
-<p><%= @item.price %></p>
+<p><%= "¥"+@item.price.to_s %></p>
 
 
 <%= form_with model: CartItem.new, url: public_cart_items_path do |f| %>
