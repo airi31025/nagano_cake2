@@ -1,16 +1,20 @@
 <%= render 'public/homes/header' %>
 <div class="container">
   <div class="row">
-<h1>商品一覧</h1>
+    <h1>商品一覧</h1>
   </div>
-<% @items.each do |item| %>
-<div>
-  <%= link_to public_item_path(item.id) do %>
-  <%= image_tag item.get_image, size: "100x200" %>
-  <% end %>
-  <p><%= item.name %></p>
-  <p><%= "¥"+item.price.to_s %></p>
+  <div class="row">
+    <% @items.each do |item| %>
+    <div class="col-md-4">
+      <div>
+        <%= link_to public_item_path(item.id) do %>
+        <%= image_tag item.get_image, size: "100x200" %>
+        <% end %>
+        <p><%= item.name %></p>
+        <p><%= "¥"+item.price.to_s %></p>
+      </div>
+    <% end %>
+    </div>
+    <%= paginate @items %>
   </div>
-<% end %>
-<%= paginate @items %>
 </div>

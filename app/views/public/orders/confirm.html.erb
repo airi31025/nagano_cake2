@@ -23,19 +23,28 @@
 </table>
 
 <table class="table table-hover table-bordered">
- <thead>
+ <tbody>
+  <tr>
     <th>送料</th>
+    <th><%= @order.shipping_cost %></th>
+  </tr>
+  <tr>
     <th>商品合計</th>
+    <th><%= @total %></th>
+  </tr>
+  <tr>
     <th>請求金額</th>
-   </thead>
-   <tbody>
-       <tr>
-         <td><%= @order.shipping_cost %></td>
-         <td><%= @total %></td>
-         <td><%= @order.shipping_cost + @total %></td>
-       </tr>
-   </tbody>
-</table>
+    <th><%= @order.shipping_cost + @total %></th>
+  </tr>
+  </tbody>
+</table> 
+   
+
+         
+        
+         
+       
+
 
 <h4>支払方法</h4>
 <%= @order.payment_method_i18n %>
