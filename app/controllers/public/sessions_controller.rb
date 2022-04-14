@@ -40,8 +40,8 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if @customer.valid_password?(params[:customer][:password]) && !is_deleted
-    # if パスワードがあっている　かつ　退会済ではない
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_active==true
+    # if パスワードがあっている　かつ　退会カラムが有効
 
     else
       render:new

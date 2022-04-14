@@ -3,7 +3,7 @@
   <div class="row">
 <h1>ショッピングカート</h1>
   </div>
-<%= button_to"カートを空にする",public_cart_items_alldelete_path ,class:"btn btn-danger btn-sm"%>
+<%= button_to"カートを空にする",public_cart_items_alldelete_path ,method: :delete ,class:"btn btn-danger btn-sm"%>
 <table class="table table-bordered">
   <thead>
     <th>商品名</th>

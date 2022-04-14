@@ -13,10 +13,10 @@ Rails.application.routes.draw do
      get 'orders/thanks'
     resources :orders,only:[:new,:create,:index,:show]
      post 'orders/confirm'
-     
 
-    resources :cart_items,only:[:index,:update,:create,:destroy]
     delete 'cart_items/alldelete'
+    resources :cart_items,only:[:index,:update,:create,:destroy]
+
     resource :customers,only:[:show,:edit,:update]
     get 'customers/confirm'
     patch 'customers/withdrawal' => 'customers#withdrawal'
