@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
 <h1>注文情報入力</h1>
+  </div>
 <%= form_with model:@order, url: public_orders_confirm_path do |f| %>
 
 <h4>支払方法</h4>
@@ -35,5 +36,4 @@
    <%= f.submit "確認登録画面へ進む", class:"btn btn-primary" %>
 
 <% end %>
-</div>
 </div>
