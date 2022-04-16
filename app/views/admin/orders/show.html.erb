@@ -4,24 +4,31 @@
 <h2>注文履歴詳細</h2>
 </div>
  <div class="row">
-<h4>購入者</h4>
-<p><%= @customer.last_name + @customer.first_name %></p>
-</div>
-<div class="row">
-<h4>注文日</h4>
-<p><%= @customer.created_at.strftime('%Y/%m/%d') %></p>
-</div>
-<div class="row">
-<h4>配送先</h4>
-<p><%= "〒" + @order.postal_code + @order.address %></p><br>
-</div>
-<%= @order.name %>
-<div class="row">
-<h4>支払方法</h4>
-<p><%= @order.payment_method_i18n %></p>
-</div>
+  <div class="col-md-8">
+   <table class="table table-borderless">
+    <tr>
+     <th>購入者</th>
+     <td><%= @customer.last_name + @customer.first_name %></td>
+    </tr>
+    <tr>
+     <th>注文日</th>
+     <td><%= @customer.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+    <th>配送先</th>
+    <td><%= "〒" + @order.postal_code + @order.address %><br><%= @order.name %></td>
+    </tr>
+    <tr>
+     <th>支払方法</th>
+     <td><%= @order.payment_method_i18n %></td>
+    </tr>
+   </table>
+  </div>
+  <div class="col-md-4"></div>
+ </div>
 
-
+ <div class="row">
+  <div class="col-md-8">
 <table class="table">
  <thead>
   <tr>
@@ -42,19 +49,22 @@
          <% end %>
    </tbody>
 </table>
+</div>
 
-<table>
- <thead>
-    <th>商品合計</th>
-    <th>送料</th>
-    <th>請求金額合計</th>
-   </thead>
-   <tbody>
-       <tr>
-         <td><%= @total %></td>
-         <td><%= @order.shipping_cost %></td>
-         <td><%= @order.shipping_cost + @total %></td>
-       </tr>
-   </tbody>
+<div class="col-md-4">
+<table class="table table-borderless">
+ <tr>
+  <th>商品合計</th>
+  <td><%= @total %></td>
+ </tr>
+ <tr>
+  <th>送料</th>
+  <td><%= @order.shipping_cost %></td>
+ </tr>
+  <th>請求金額合計</th>
+  <td><%= @order.shipping_cost + @total %></td>
+ <tr>
 </table>
+</div>
+</div>
 </div>

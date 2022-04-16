@@ -10,3 +10,8 @@
         #   production: "製作中"
         #   ready_to_ship: "発送準備中"
         #   shipped: "発送済"
+
+    activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
