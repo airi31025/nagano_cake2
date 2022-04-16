@@ -8,7 +8,6 @@
     <th>注文日</th>
     <th>配送先</th>
     <th>注文商品</th>
-    <th></th>
     <th>支払金額</th>
     <th>注文詳細</th>
    </thead>
@@ -21,9 +20,11 @@
            <%= order.address %><br>
            <%= order.name %>
          </td>
-         <% @items.each do |item| %>
-         <td><%= item.name %></td>
+         <td>
+         <% order.items.each do |item| %>
+         <%= item.name %><br>
          <% end %>
+         </td>
          <td><%= order.total_payment %></td>
 
          <td><%= link_to"表示する",public_order_path(order.id) ,class:"btn btn-primary btn-sm"%></td>

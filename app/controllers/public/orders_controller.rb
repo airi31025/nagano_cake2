@@ -54,8 +54,11 @@ current_customer.cart_items.each do |cart_item|
   end
 
   def index
-    @orders = Order.all
-    @items = Item.all
+    @orders = current_customer.orders.all
+
+   
+
+
   end
 
   def show
